@@ -1,0 +1,10 @@
+https://www.geeksforgeeks.org/graph-and-its-representations/
+https://www.inf.ufpr.br/eduardo/ensino/ci218/trabalhos/escalona/escalona.html
+
+Saída esperada:
+1 1,2 NS NV
+2 3,4 SS SV
+
+TODO:
+- criar grafos
+- cada transação um nó no grafo
