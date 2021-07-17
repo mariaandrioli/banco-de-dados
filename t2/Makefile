@@ -8,7 +8,7 @@ OBJS = utils.o \
 
 .PHONY: limpa faxina clean distclean purge all
 
-%.o: %.c %.h rawsocket.h
+%.o: %.c %.h
 	$(CC) -c $(CFLAGS) $<
 
 $(PROG):  $(OBJS)
