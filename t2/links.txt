@@ -1,10 +1,8 @@
 https://www.geeksforgeeks.org/graph-and-its-representations/
 https://www.inf.ufpr.br/eduardo/ensino/ci218/trabalhos/escalona/escalona.html
+https://embeddedinventor.com/guide-to-configure-doxygen-to-document-c-source-code-for-beginners/#Installation_of_Doxygen
+
 
 Saída esperada:
 1 1,2 NS NV
 2 3,4 SS SV
-
-TODO:
-- criar grafos
-- cada transação um nó no grafo

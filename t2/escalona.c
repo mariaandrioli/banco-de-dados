@@ -8,18 +8,31 @@
 #include "utils.h"
 
 /**
- * This is the main function
+ * Função principal
  * 
 */
 int main() {
 	char line[100]; 
-	// struct transaction_t* t = (struct transaction_t*) malloc(sizeof(struct transaction_t));
+	struct transaction_t* t;
+	struct transaction_t* aux = (struct transaction_t*) malloc(sizeof(struct transaction_t)*128);
+	struct grafo_t* grafo;
+
+	int cont = 0;
 
 	while (fgets(line, 100, stdin) != NULL) 
-	{ 
-		deblank(line);
-		//printf("line: %s", line);
+	{
+		t = deblank(line);
+		aux[cont].time =  t->time;
+		aux[cont].index =  t->index;
+		aux[cont].operation =  t->operation;
+		aux[cont].attribute =  t->attribute;
+		cont++;
+		// printf("aux[cont]->time %d\n", aux[cont].time);
+		// printf("t->index %d\n", t->index);
+		// printf("t->op %c\n", t->operation);
+		// printf("t->at %c\n", t->attribute);
 	} 
-		
+
+	grafo = criaGrafo(cont);
 	return(0);
 }

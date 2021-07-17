@@ -95,10 +95,6 @@ struct transaction_t* deblank(char* line) {
 		ptr = strtok(NULL, delim);
 		cont++;
 	}
-
-	// printf("t->time %d\n", t->time);
-	// printf("t->index %d\n", t->index);
-	// printf("t->op %c\n", t->operation);
-	// printf("t->at %c\n", t->attribute);
+	
 	return t;
 }
