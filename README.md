@@ -15,7 +15,7 @@ Para executar, siga estas etapas:
 
 ## 🤝 Colaboradores
 
-- Maria Teresa Andrioli 
+Maria Teresa Andrioli 
 
 [![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/mariateresaandrioli/)
 &nbsp;
