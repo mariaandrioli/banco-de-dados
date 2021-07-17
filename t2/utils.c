@@ -1,4 +1,9 @@
-/// @file utils.c
+/** @file utils.c
+ *  @brief Funções utilizadas no projeto
+ *
+ *
+ * @author Maria Teresa Kravetz Andrioli (GRR20171602)
+ */
 #include "utils.h"
 
 struct nodo_t* criaNodo(int dest)
@@ -61,8 +66,8 @@ void printGraph(struct grafo_t* grafo)
 }
 
 // Le linha da transação
-struct line_t* deblank(char* line) {
-	struct line_t* t = (struct line_t*) malloc(sizeof(struct line_t));
+struct transaction_t* deblank(char* line) {
+	struct transaction_t* t = (struct transaction_t*) malloc(sizeof(struct transaction_t));
 	char delim[] = " ";
 
 	char *ptr = strtok(line, delim);

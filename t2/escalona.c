@@ -1,9 +1,9 @@
-/// @file escalona.c
-#include <strings.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+/** @file escalona.c
+ *  @brief Arquivo principal do projeto
+ *
+ *
+ * @author Maria Teresa Kravetz Andrioli (GRR20171602)
+ */
 
 #include "utils.h"
 
@@ -13,7 +13,7 @@
 */
 int main() {
 	char line[100]; 
-	// struct line_t* t = (struct line_t*) malloc(sizeof(struct line_t));
+	// struct transaction_t* t = (struct transaction_t*) malloc(sizeof(struct transaction_t));
 
 	while (fgets(line, 100, stdin) != NULL) 
 	{ 
