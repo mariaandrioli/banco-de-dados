@@ -21,7 +21,7 @@ int main() {
 
 	while (fgets(line, 100, stdin) != NULL) 
 	{
-		t = deblank(line);
+		t = retiraEspacos(line);
 		aux[cont].time =  t->time;
 		aux[cont].index =  t->index;
 		aux[cont].operation =  t->operation;

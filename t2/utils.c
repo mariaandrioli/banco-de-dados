@@ -49,7 +49,7 @@ void criaAresta (struct grafo_t* grafo, int src, int dest)
 }
  
 // Imprime grafo
-void printGraph(struct grafo_t* grafo)
+void imprimeGrafo(struct grafo_t* grafo)
 {
 	int v;
 	for (v = 0; v < grafo->V; ++v)
@@ -66,7 +66,7 @@ void printGraph(struct grafo_t* grafo)
 }
 
 // Le linha da transação
-struct transaction_t* deblank(char* line) {
+struct transaction_t* retiraEspacos(char* line) {
 	struct transaction_t* t = (struct transaction_t*) malloc(sizeof(struct transaction_t));
 	char delim[] = " ";
 
