@@ -6,3 +6,9 @@ https://embeddedinventor.com/guide-to-configure-doxygen-to-document-c-source-cod
 Saída esperada:
 1 1,2 NS NV
 2 3,4 SS SV
+
+TODO
+- Como são feitos os escalonamentos?
+- Um grafo para cada escalonamento -> Inserir arestas segundo o alg
+- Algoritmo de detecção de ciclo em grafo
+- Algoritmo pra ver se é SV ou NV
