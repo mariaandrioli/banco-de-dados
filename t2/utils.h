@@ -74,12 +74,12 @@ void criaAresta (struct grafo_t* grafo, int src, int dest);
 /** @brief Função que imprime grafo
  *  @param grafo: grafo que será impresso
  */
-void printGraph(struct grafo_t* grafo);
+void imprimeGrafo(struct grafo_t* grafo);
 
 /** @brief Função que remove espaços na linha de transação e coloca no struct
  *  @param line: string da transação
  *  @return Struct do tipo transaction_t
  */
-struct transaction_t* deblank(char* line);
+struct transaction_t* retiraEspacos(char* line);
 
 #endif
