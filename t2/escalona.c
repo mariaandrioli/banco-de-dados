@@ -27,12 +27,12 @@ int main() {
 		aux[cont].operation =  t->operation;
 		aux[cont].attribute =  t->attribute;
 		cont++;
-		// printf("aux[cont]->time %d\n", aux[cont].time);
-		// printf("t->index %d\n", t->index);
-		// printf("t->op %c\n", t->operation);
-		// printf("t->at %c\n", t->attribute);
+		printf("t->time %d\n", t->time);
+		printf("t->index %d\n", t->index);
+		printf("t->op %c\n", t->operation);
+		printf("t->at %c\n", t->attribute);
 	} 
-
+	printf("\n\n");
 	grafo = criaGrafo(cont);
 	return(0);
 }

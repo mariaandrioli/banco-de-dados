@@ -1,3 +1,6 @@
 #!/bin/sh
 make
-./escalona < teste.in
+./escalona < testes/teste.in
+./escalona < testes/teste1.in
+./escalona < testes/teste2.in
+make purge
