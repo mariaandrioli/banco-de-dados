@@ -34,8 +34,16 @@ int main() {
 		printf("t->at %c\n", t->attribute);
 	}
 
-	struct escalonamento_t *transacoesUnicas = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*getTransacoesUnicas(transactions, qtdTransacoes));
+	int qtdTransacoesUnicas = getTransacoesUnicas(transactions, qtdTransacoes);
+	struct escalonamento_t *transacoesUnicas = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*qtdTransacoesUnicas);
 	
+	int escalonamento = 1;
+
+	for (int i = qtdTransacoes; i > 0; i--){
+		if (transactions[i].operation ==  COMMIT){
+			transacoesUnicas[transactions[i].operation-1].escalonamento = escalonamento;
+		}
+	}
 	// printf("\n\n");
 	return(0);
 }

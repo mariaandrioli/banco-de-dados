@@ -13,7 +13,11 @@
 #include <string.h>
 #include <unistd.h>
 
-#define LINESIZE 129
+#define LINESIZE 128
+
+#define READ "R"
+#define WRITE "W"
+#define COMMIT "C"
 
 /**
  * Representa um id e respectivo escalonamento
