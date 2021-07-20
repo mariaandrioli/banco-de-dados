@@ -2,16 +2,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/mariaandrioli/banco-de-dados?style=for-the-badge)
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. 
-
-## ☕ Executando 
-
-Para executar, siga estas etapas:
-
-```
-<exemplo_de_uso>
-```
-
+> Repositório contendo os trabalhos práticos da disciplina de banco de dados 
 
 ## 🤝 Colaboradores
 
