@@ -13,6 +13,17 @@
 #include <string.h>
 #include <unistd.h>
 
+#define LINESIZE 129
+
+/**
+ * Representa um id e respectivo escalonamento
+*/
+struct escalonamento_t
+{
+	int index;
+	int escalonamento; 
+};
+
 /**
  * Representa uma transação
 */
@@ -81,5 +92,9 @@ void imprimeGrafo(struct grafo_t* grafo);
  *  @return Struct do tipo transaction_t
  */
 struct transaction_t* retiraEspacos(char* line);
+
+int isInArray(int c, struct escalonamento_t* array, int tam);
+
+int getTransacoesUnicas(struct transaction_t* transactions, int tam);
 
 #endif

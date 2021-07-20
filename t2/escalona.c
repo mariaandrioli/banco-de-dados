@@ -12,27 +12,31 @@
  * 
 */
 int main() {
-	char line[100]; 
+	char line[LINESIZE]; 
 	struct transaction_t* t;
-	struct transaction_t* aux = (struct transaction_t*) malloc(sizeof(struct transaction_t)*128);
-	struct grafo_t* grafo;
+	// vetor de struct contendo todas as informações das transações
+	struct transaction_t* transactions = (struct transaction_t*) malloc(sizeof(struct transaction_t)*LINESIZE); 
 
-	int cont = 0;
+	int qtdTransacoes = 0;
 
-	while (fgets(line, 100, stdin) != NULL) 
+	// le arquivo de transações e coloca no vetor transactions
+	while (fgets(line, LINESIZE, stdin) != NULL) 
 	{
 		t = retiraEspacos(line);
-		aux[cont].time =  t->time;
-		aux[cont].index =  t->index;
-		aux[cont].operation =  t->operation;
-		aux[cont].attribute =  t->attribute;
-		cont++;
+		transactions[qtdTransacoes].time =  t->time;
+		transactions[qtdTransacoes].index =  t->index;
+		transactions[qtdTransacoes].operation =  t->operation;
+		transactions[qtdTransacoes].attribute =  t->attribute;
+		qtdTransacoes++;
 		printf("t->time %d\n", t->time);
 		printf("t->index %d\n", t->index);
 		printf("t->op %c\n", t->operation);
 		printf("t->at %c\n", t->attribute);
-	} 
-	printf("\n\n");
-	grafo = criaGrafo(cont);
+	}
+
+	struct escalonamento_t *transacoesUnicas = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*getTransacoesUnicas(transactions, qtdTransacoes));
+	
+	// printf("\n\n");
 	return(0);
 }
+

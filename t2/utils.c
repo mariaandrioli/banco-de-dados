@@ -98,3 +98,33 @@ struct transaction_t* retiraEspacos(char* line) {
 	
 	return t;
 }
+
+// verifica se c ta em array
+int isInArray(int c, struct escalonamento_t* array, int tam) {
+	for (int i = 0; i < tam; i++){
+		if (c == array[i].index){
+			return 1;
+		}
+	}
+	
+	return 0;
+}
+
+int getTransacoesUnicas(struct transaction_t* transactions, int tam) {
+	struct escalonamento_t *numTransaction = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*(tam+1)); // vetor de ids das transações
+	int i,j, qtdTransacoesUnicas = 0;
+
+	for (i = 0, j = 0; j < tam; j++){
+		if (!(isInArray(transactions[j].index, numTransaction, tam))) { 
+			numTransaction[i].index = transactions[j].index;
+			i++;
+		}
+	}
+
+	while (numTransaction[qtdTransacoesUnicas].index != 0) {
+		qtdTransacoesUnicas++;
+	}
+	
+	free(numTransaction);
+	return qtdTransacoesUnicas;
+}
