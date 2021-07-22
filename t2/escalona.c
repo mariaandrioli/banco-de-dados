@@ -18,18 +18,18 @@ int main() {
 	char line[LINESIZE]; 
 	struct line_t* t;
 	// vetor de struct contendo todas as informações das transações
-	struct line_t* transactions_ops = (struct line_t*) malloc(sizeof(struct line_t)*LINESIZE);
+	struct line_t* transactionsOps = (struct line_t*) malloc(sizeof(struct line_t)*LINESIZE);
 
 	int qtdTransacoes = 0;
 
-	// le arquivo de transações e coloca no vetor transactions_ops
+	// le arquivo de transações e coloca no vetor transactionsOps
 	while (fgets(line, LINESIZE, stdin) != NULL) 
 	{
 		t = retiraEspacos(line);
-		transactions_ops[qtdTransacoes].startTime =  t->startTime;
-		transactions_ops[qtdTransacoes].transaction_id =  t->transaction_id;
-		transactions_ops[qtdTransacoes].operation =  t->operation;
-		transactions_ops[qtdTransacoes].attribute =  t->attribute;
+		transactionsOps[qtdTransacoes].startTime =  t->startTime;
+		transactionsOps[qtdTransacoes].transaction_id =  t->transaction_id;
+		transactionsOps[qtdTransacoes].operation =  t->operation;
+		transactionsOps[qtdTransacoes].attribute =  t->attribute;
 		qtdTransacoes++;
 
 		// printf("t->time %d\n", t->startTime);
@@ -39,7 +39,7 @@ int main() {
 		// printf("\n");
 	}
 
-	int qtdTransacoesUnicas = getTransacoesUnicas(transactions_ops, qtdTransacoes);
+	int qtdTransacoesUnicas = getTransacoesUnicas(transactionsOps, qtdTransacoes);
 	struct transaction_t* transactions =  (struct transaction_t*) malloc(sizeof(struct transaction_t)*qtdTransacoesUnicas);
 
 	// Populando vetor de transações
@@ -47,29 +47,42 @@ int main() {
 		transactions[i].transaction_id = i+1;
 	}
 
-	for (int j = 0; j < qtdTransacoesUnicas; j++)
-		for (int i = 0; i < qtdTransacoes; i++)
+	int escalonamentoAtual = 1;
+	int ativas, commits = 0;
+	for (int i = 0; i < qtdTransacoes; i++)
+		for (int j = 0; j < qtdTransacoesUnicas; j++)
 		{
-			if (transactions[j].transaction_id == transactions_ops[i].transaction_id)
+			if (transactions[j].transaction_id == transactionsOps[i].transaction_id)
 			{
 				if (!(transactions[j].startTime))
 				{
-					transactions[j].startTime = transactions_ops[i].startTime;		
+					transactions[j].startTime = transactionsOps[i].startTime;
+					transactions[j].escalonamento = escalonamentoAtual;
+					ativas++;
 				}
-				if (transactions_ops[i].operation == COMMIT)
+				if (transactionsOps[i].operation == COMMIT)
 				{
-					transactions[j].endTime = transactions_ops[i].startTime;
-					// adiciona em allOperations			
+					transactions[j].endTime = transactionsOps[i].startTime;
+					// adiciona em allOperations
+					commits++;
+					
+					if (commits == ativas)
+					{
+						escalonamentoAtual++;
+						ativas = 0;
+						commits = 0;
+					}
+					
 				}
-				if (transactions_ops[i].operation == WRITE)
+				if (transactionsOps[i].operation == WRITE)
 				{
-					printf("read");
+					printf("");
 					// adiciona em writeOperations	
 					// adiciona em allOperations	
 				}
-				if (transactions_ops[i].operation == READ)
+				if (transactionsOps[i].operation == READ)
 				{
-					printf("read");
+					printf("");
 					// adiciona em readOperations	
 					// adiciona em allOperations	
 				}
@@ -77,7 +90,7 @@ int main() {
 		}
 
 	for (int j = 0; j < qtdTransacoesUnicas; j++){
-		printf("%d %d %d\n", transactions[j].transaction_id, transactions[j].startTime, transactions[j].endTime);
+		printf("id: %d escal:%d\n", transactions[j].transaction_id, transactions[j].escalonamento);
 	} 
 	// Populando vetor de transações
 
@@ -85,7 +98,7 @@ int main() {
 	// em cada grafo, faz teste de serialidade (fazer teste na hora de adicionar talvez?)
 	// no fim, ve se é visao equivalente
 
-	printf("%d\n", qtdTransacoesUnicas);
+	printf("qtd transacoes:%d\n\n", qtdTransacoesUnicas);
 	return(0);
 }
 

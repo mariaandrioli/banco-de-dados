@@ -62,7 +62,7 @@ struct transaction_t
 	struct operation_t *readOperations;
 	struct operation_t *writeOperations;
 	struct operation_t *allOperations;
-	char attribute;
+	char escalonamento;
 };
 
 /** @brief Função que remove espaços na linha de transação e coloca no struct
