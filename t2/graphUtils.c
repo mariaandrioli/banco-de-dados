@@ -1,10 +1,10 @@
-/** @file utils.c
+/** @file graphUtils.c
  *  @brief Funções utilizadas no projeto
  *
  *
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
  */
-#include "utils.h"
+#include "graphUtils.h"
 
 struct nodo_t* criaNodo(int dest)
 {
@@ -63,68 +63,4 @@ void imprimeGrafo(struct grafo_t* grafo)
 		}
 		printf("\n");
 	}
-}
-
-// Le linha da transação
-struct transaction_t* retiraEspacos(char* line) {
-	struct transaction_t* t = (struct transaction_t*) malloc(sizeof(struct transaction_t));
-	char delim[] = " ";
-
-	char *ptr = strtok(line, delim);
-	int cont = 0;
-
-	while(ptr != NULL)
-	{
-		switch (cont)
-		{
-		case 0:
-			t->time = atoi(ptr);
-			break;
-		case 1:
-			t->index = atoi(ptr);
-			break;
-		case 2:
-			t->operation = *ptr;
-			break;
-		case 3:
-			t->attribute = *ptr;
-			break;
-		default:
-			break;
-		}
-		ptr = strtok(NULL, delim);
-		cont++;
-	}
-	
-	return t;
-}
-
-// verifica se c ta em array
-int isInArray(int c, struct escalonamento_t* array, int tam) {
-	for (int i = 0; i < tam; i++){
-		if (c == array[i].index){
-			return 1;
-		}
-	}
-	
-	return 0;
-}
-
-int getTransacoesUnicas(struct transaction_t* transactions, int tam) {
-	struct escalonamento_t *numTransaction = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*(tam+1)); // vetor de ids das transações
-	int i,j, qtdTransacoesUnicas = 0;
-
-	for (i = 0, j = 0; j < tam; j++){
-		if (!(isInArray(transactions[j].index, numTransaction, tam))) { 
-			numTransaction[i].index = transactions[j].index;
-			i++;
-		}
-	}
-
-	while (numTransaction[qtdTransacoesUnicas].index != 0) {
-		qtdTransacoesUnicas++;
-	}
-	
-	free(numTransaction);
-	return qtdTransacoesUnicas;
 }

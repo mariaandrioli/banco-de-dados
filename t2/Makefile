@@ -3,7 +3,7 @@ CFLAGS = -Wall
 LFLAGS =
 
 PROG = escalona
-OBJS = utils.o \
+OBJS = graphUtils.o \
 		$(PROG).o
 
 .PHONY: limpa faxina clean distclean purge all
