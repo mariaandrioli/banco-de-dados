@@ -4,6 +4,8 @@ LFLAGS =
 
 PROG = escalona
 OBJS = graphUtils.o \
+		seriabilityUtils.o \
+		transactionUtils.o \
 		$(PROG).o
 
 .PHONY: limpa faxina clean distclean purge all

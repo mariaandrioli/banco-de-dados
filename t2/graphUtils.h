@@ -1,8 +1,9 @@
 /** @file graphUtils.h
- *  @brief Funções utilizadas no projeto
+ *  @brief Funções utilizadas para manipular grafos
  *
  *
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
+ * @author Ana Carolina Faria Magnoni (GRR20166808)
  */
 
 #ifndef __GRAPHUTILS__

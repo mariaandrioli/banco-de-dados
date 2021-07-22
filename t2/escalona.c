@@ -3,11 +3,12 @@
  *
  *
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
+ * @author Ana Carolina Faria Magnoni (GRR20166808)
  */
 
 #include "graphUtils.h"
 #include "transactionUtils.h"
-#include "transactionUtils.h"
+#include "seriabilityUtils.h"
 
 /**
  * Função principal
@@ -25,13 +26,13 @@ int main() {
 	while (fgets(line, LINESIZE, stdin) != NULL) 
 	{
 		t = retiraEspacos(line);
-		transactions[qtdTransacoes].time =  t->time;
+		transactions[qtdTransacoes].startTime =  t->startTime;
 		transactions[qtdTransacoes].transaction_id =  t->transaction_id;
 		transactions[qtdTransacoes].operation =  t->operation;
 		transactions[qtdTransacoes].attribute =  t->attribute;
 		qtdTransacoes++;
 
-		printf("t->time %d\n", t->time);
+		printf("t->time %d\n", t->startTime);
 		printf("t->transaction_id %d\n", t->transaction_id);
 		printf("t->op %c\n", t->operation);
 		printf("t->at %c\n", t->attribute);

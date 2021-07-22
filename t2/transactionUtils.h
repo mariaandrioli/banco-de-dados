@@ -26,8 +26,8 @@ struct escalonamento_t
 {
 	int escalonamento_id;
 	int *transactions_list;
-    char seriability_result[2];
-    char equivalence_result[2];
+	char seriability_result[2];
+	char equivalence_result[2];
 };
 
 /**
@@ -49,8 +49,8 @@ struct transaction_t
 	int endTime;
 	int transaction_id;
 	struct operation_t *readOperations;
-    struct operation_t *writeOperations;
-    struct operation_t *allOperations;
+	struct operation_t *writeOperations;
+	struct operation_t *allOperations;
 	char attribute;
 };
 

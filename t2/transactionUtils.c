@@ -72,36 +72,36 @@ struct transaction_t* retiraEspacos(char* line) {
 }
 
 struct transaction_t* getWriteTransactions(struct transaction_t* writeTransactions, struct transaction_t* transactions, int transactionCount) {
-    int i = 0;
+		int i = 0;
 
-    for (i = 0; i < transactionCount; i++) {
-        if (transactions[i].operation = WRITE) {
-            writeTransactions[i].time =  transactions->time;
-            writeTransactions[i].transaction_id =  transactions->transaction_id;
-            writeTransactions[i].operation =  transactions->operation;
-            writeTransactions[i].attribute =  transactions->attribute;        
-        }
-    }
+		for (i = 0; i < transactionCount; i++) {
+				if (transactions[i].operation = WRITE) {
+						writeTransactions[i].time =  transactions->time;
+						writeTransactions[i].transaction_id =  transactions->transaction_id;
+						writeTransactions[i].operation =  transactions->operation;
+						writeTransactions[i].attribute =  transactions->attribute;        
+				}
+		}
 
-    writeTransactions = (struct transaction_t *) realloc(writeTransactions, sizeof(struct transaction_t)*i);
+		writeTransactions = (struct transaction_t *) realloc(writeTransactions, sizeof(struct transaction_t)*i);
 
-    return writeTransactions;
-    
+		return writeTransactions;
+		
 }
 
 struct transaction_t* getReadTransactions(struct transaction_t* readTransactions, struct transaction_t* transactions, int transactionCount) {
-    int i = 0;
+		int i = 0;
 
-    for (i = 0; i < transactionCount; i++) {
-        if (transactions[i].operation = READ) {
-            readTransactions[i].time =  transactions->time;
-            readTransactions[i].transaction_id =  transactions->transaction_id;
-            readTransactions[i].operation =  transactions->operation;
-            readTransactions[i].attribute =  transactions->attribute;        
-        }
-    }
+		for (i = 0; i < transactionCount; i++) {
+				if (transactions[i].operation = READ) {
+						readTransactions[i].time =  transactions->time;
+						readTransactions[i].transaction_id =  transactions->transaction_id;
+						readTransactions[i].operation =  transactions->operation;
+						readTransactions[i].attribute =  transactions->attribute;        
+				}
+		}
 
-    readTransactions = (struct transaction_t *) realloc(readTransactions, sizeof(struct transaction_t)*i);
+		readTransactions = (struct transaction_t *) realloc(readTransactions, sizeof(struct transaction_t)*i);
 
-    return readTransactions;
+		return readTransactions;
 }

@@ -1,9 +1,11 @@
-/** @file graphUtils.c
- *  @brief Funções utilizadas no projeto
+/** @file graphUtils.h
+ *  @brief Funções utilizadas para manipular grafos
  *
  *
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
+ * @author Ana Carolina Faria Magnoni (GRR20166808)
  */
+
 #include "graphUtils.h"
 
 struct nodo_t* criaNodo(int dest)

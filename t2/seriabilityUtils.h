@@ -1,9 +1,9 @@
-/** @file seriabilityUtils.h
- *  @brief Funções utilizadas no projeto
+/** @file seriabilityUtils.c
+ *  @brief Funções auxiliares de seriabilidade
  *
  *
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
- * @author Ana Carolina Faria Magnoni (GRR20186808)
+ * @author Ana Carolina Faria Magnoni (GRR20166808)
  */
 
 #ifndef __SERIABILITYHUTILS__
