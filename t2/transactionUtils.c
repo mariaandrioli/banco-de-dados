@@ -8,17 +8,17 @@
 #include "transactionUtils.h"
 
 // verifica se c ta em array
-bool isInArray(int c, struct escalonamento_t* array, int tam) {
+int isInArray(int c, struct escalonamento_t* array, int tam) {
 	for (int i = 0; i < tam; i++){
 		if (c == array[i].escalonamento_id){
-			return true;
+			return 1;
 		}
 	}
 	
-	return false;
+	return 0;
 }
 
-int getTransacoesUnicas(struct transaction_t* transactions, int tam) {
+int getTransacoesUnicas(struct line_t* transactions, int tam) {
 	struct escalonamento_t *numTransactions = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*(tam+1)); // vetor de ids das transações
 	int i,j, qtdTransacoesUnicas = 0;
 
@@ -38,8 +38,8 @@ int getTransacoesUnicas(struct transaction_t* transactions, int tam) {
 }
 
 // Le linha da transação
-struct transaction_t* retiraEspacos(char* line) {
-	struct transaction_t* t = (struct transaction_t*) malloc(sizeof(struct transaction_t));
+struct line_t* retiraEspacos(char* line) {
+	struct line_t* t = (struct line_t*) malloc(sizeof(struct line_t));
 	char delim[] = " ";
 
 	char *ptr = strtok(line, delim);
@@ -50,7 +50,7 @@ struct transaction_t* retiraEspacos(char* line) {
 		switch (cont)
 		{
 		case 0:
-			t->time = atoi(ptr);
+			t->startTime = atoi(ptr);
 			break;
 		case 1:
 			t->transaction_id = atoi(ptr);
@@ -71,6 +71,7 @@ struct transaction_t* retiraEspacos(char* line) {
 	return t;
 }
 
+/*
 struct transaction_t* getWriteTransactions(struct transaction_t* writeTransactions, struct transaction_t* transactions, int transactionCount) {
 		int i = 0;
 
@@ -104,4 +105,4 @@ struct transaction_t* getReadTransactions(struct transaction_t* readTransactions
 		readTransactions = (struct transaction_t *) realloc(readTransactions, sizeof(struct transaction_t)*i);
 
 		return readTransactions;
-}
+}*/

@@ -6,8 +6,8 @@
  * @author Ana Carolina Faria Magnoni (GRR20166808)
  */
 
-#ifndef __SERIABILITYHUTILS__
-#define __SERIABILITYHUTILS__
+#ifndef __SERIABILITYUTILS__
+#define __SERIABILITYUTILS__
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
@@ -17,6 +17,6 @@
 
 #include "transactionUtils.h"
 
-bool checkForSequencedTransactionPatterns(struct transaction_t* currentTransaction, struct transaction_t* otherTransaction);
+// bool checkForSequencedTransactionPatterns(struct transaction_t* currentTransaction, struct transaction_t* otherTransaction);
 
 #endif

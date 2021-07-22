@@ -7,6 +7,7 @@
  */
 #include "seriabilityUtils.h"
 
+/*
 bool checkForSequencedTransactionPatterns(struct transaction_t* currentTransaction, struct transaction_t* otherTransaction) {
 	int i, j = 0;
 
@@ -20,4 +21,4 @@ bool checkForSequencedTransactionPatterns(struct transaction_t* currentTransacti
 	}
 
 	return false;
-}
+}*/

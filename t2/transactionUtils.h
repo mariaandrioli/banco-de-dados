@@ -5,7 +5,8 @@
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
  * @author Ana Carolina Faria Magnoni (GRR20166808)
  */
-
+#ifndef __SERIABILITYUTILS__
+#define __SERIABILITYUTILS__
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
@@ -39,6 +40,16 @@ struct operation_t
 	char attribute;
 };
 
+/**
+ * Representa uma das operações da transação na leitura
+*/
+struct line_t
+{
+	int startTime;
+	int transaction_id;
+	char operation;
+	char attribute;
+};
 
 /**
  * Representa uma transação
@@ -58,12 +69,25 @@ struct transaction_t
  *  @param line: string da transação
  *  @return Struct do tipo transaction_t
  */
-struct transaction_t* retiraEspacos(char* line);
+struct line_t* retiraEspacos(char* line);
 
-bool isInArray(int c, struct escalonamento_t* array, int tam);
+/** @brief Verifica se c ta em array
+ *  @param c: inteiro 
+ *  @param array: struct do tipo escalonamento_t 
+ *  @param tam: tamanho do array 
+ *  @return Booleano
+ */
+int isInArray(int c, struct escalonamento_t* array, int tam);
 
-int getTransacoesUnicas(struct transaction_t* transactions, int tam);
+/** @brief Verifica quantas transações unicas existem em um vetor
+ *  @param transactions: vetor de transaction_t  
+ *  @param tam: tamanho do vetor de transaction_t 
+ *  @return quantidade de transaçoes unicas
+ */
+int getTransacoesUnicas(struct line_t* transactions, int tam);
 
-struct transaction_t* getWriteTransactions(struct transaction_t* writeTransactions, struct transaction_t* transactions, int transactionCount);
+// struct transaction_t* getWriteTransactions(struct transaction_t* writeTransactions, struct transaction_t* transactions, int transactionCount);
 
-struct transaction_t* getReadTransactions(struct transaction_t* readTransactions, struct transaction_t* transactions, int transactionCount);
+// struct transaction_t* getReadTransactions(struct transaction_t* readTransactions, struct transaction_t* transactions, int transactionCount);
+
+#endif
