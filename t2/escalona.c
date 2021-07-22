@@ -45,8 +45,25 @@ int main() {
 	// Populando vetor de transações
 	for (int i = 0; i < qtdTransacoesUnicas; i++){
 		transactions[i].transaction_id = i+1;
-	}
+		transactions[i].readOperations = (struct operation_t*) malloc(sizeof(struct operation_t)*OPNUM);
+		transactions[i].writeOperations = (struct operation_t*) malloc(sizeof(struct operation_t)*OPNUM);
+		transactions[i].allOperations = (struct operation_t*) malloc(sizeof(struct operation_t)*OPNUM*2);
+		
+		for (int m = 0; m < OPNUM; m++)
+		{
+			transactions[i].readOperations[m].type = 0;
+			transactions[i].readOperations[m].attribute = ' ';
+			transactions[i].writeOperations[m].type = 0;
+			transactions[i].writeOperations[m].attribute = ' ';
+		}
 
+		for (int m = 0; m < OPNUM*2; m++)
+		{
+			transactions[i].allOperations[m].type = 0;
+			transactions[i].allOperations[m].attribute = ' ';
+		}
+	}
+	
 	int escalonamentoAtual = 1;
 	int ativas, commits = 0;
 	for (int i = 0; i < qtdTransacoes; i++)
@@ -63,7 +80,8 @@ int main() {
 				if (transactionsOps[i].operation == COMMIT)
 				{
 					transactions[j].endTime = transactionsOps[i].startTime;
-					// adiciona em allOperations
+					addsToOpsArray(&transactions[i].allOperations, C, transactionsOps[i].attribute);
+
 					commits++;
 					
 					if (commits == ativas)
@@ -77,18 +95,18 @@ int main() {
 				if (transactionsOps[i].operation == WRITE)
 				{
 					printf("");
-					// adiciona em writeOperations	
-					// adiciona em allOperations	
+					//addsToOpsArray(transactions[i].writeOperations, W, transactionsOps[i].attribute);
+					//addsToOpsArray(transactions[i].allOperations, W, transactionsOps[i].attribute);
 				}
 				if (transactionsOps[i].operation == READ)
 				{
 					printf("");
-					// adiciona em readOperations	
-					// adiciona em allOperations	
+					//addsToOpsArray(&transactions[i].writeOperations, R, transactionsOps[i].attribute);
+					//addsToOpsArray(transactions[i].allOperations, R, transactionsOps[i].attribute);	
 				}
 			}
 		}
-
+	
 	for (int j = 0; j < qtdTransacoesUnicas; j++){
 		printf("id: %d escal:%d\n", transactions[j].transaction_id, transactions[j].escalonamento);
 	} 

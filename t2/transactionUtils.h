@@ -15,10 +15,13 @@
 #include <stdbool.h>
 
 #define LINESIZE 128
+#define OPNUM 8
 #define READ 'R'
 #define WRITE 'W'
 #define COMMIT 'C'
-
+#define R 1
+#define W 2
+#define C 3
 
 /**
  * Representa um id e respectivo escalonamento
@@ -36,7 +39,7 @@ struct escalonamento_t
 */
 struct operation_t
 {
-	int name;
+	int type;
 	char attribute;
 };
 
@@ -85,6 +88,14 @@ int isInArray(int c, struct escalonamento_t* array, int tam);
  *  @return quantidade de transaçoes unicas
  */
 int getTransacoesUnicas(struct line_t* transactions, int tam);
+
+/** @brief Adiciona operaçao em um array
+ *  @param array: vetor de operation_t  
+ *  @param type: tipo da operacao
+ *  @param atribute: atributo da operacao
+ *  @return vetor modificado
+ */
+int addsToOpsArray(struct operation_t** array, int type, char attribute);
 
 // struct transaction_t* getWriteTransactions(struct transaction_t* writeTransactions, struct transaction_t* transactions, int transactionCount);
 

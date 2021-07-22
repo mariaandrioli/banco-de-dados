@@ -71,6 +71,18 @@ struct line_t* retiraEspacos(char* line) {
 	return t;
 }
 
+int addsToOpsArray(struct operation_t **array, int type, char attribute){
+	int c = 0;
+	while (!(&array[c]->type)) {
+		c++;
+	}
+
+	// array[c]->type = ptr;
+	// array[c]->attribute = attribute;
+
+	return 1;
+}
+
 /*
 struct transaction_t* getWriteTransactions(struct transaction_t* writeTransactions, struct transaction_t* transactions, int transactionCount) {
 		int i = 0;
