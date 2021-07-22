@@ -100,18 +100,20 @@ int main() {
 				}
 				if (transactionsOps[i].operation == READ)
 				{
-					addsToOpsArray(&transactions[j].writeOperations, R, transactionsOps[i].attribute);
+					addsToOpsArray(transactions[j].writeOperations, R, transactionsOps[i].attribute);
 					addsToOpsArray(transactions[j].allOperations, R, transactionsOps[i].attribute);	
 				}
 			}
 		}
 	}
-	
+	escalonamentoAtual--;
+	struct escalonamento_t* escalonamentos = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*escalonamentoAtual);
+	fazEscalonamento(escalonamentos, transactions, escalonamentoAtual, qtdTransacoesUnicas);
 	// for (int j = 0; j < qtdTransacoesUnicas; j++){
 	// 	printf("id: %d escal:%d\n", transactions[j].transaction_id, transactions[j].escalonamento);
 	// } 
 
-	imprimeSaida(transactions, escalonamentoAtual, qtdTransacoesUnicas);
+	imprimeSaida(escalonamentos, escalonamentoAtual);
 	return(0);
 }
 

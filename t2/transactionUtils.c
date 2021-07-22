@@ -82,10 +82,7 @@ int addsToOpsArray(struct operation_t *array, int type, char attribute){
 	return 1;
 }
 
-void imprimeSaida(struct transaction_t* transactions, int qtdEscalonamentos, int unicas) {
-	qtdEscalonamentos--;
-	struct escalonamento_t* escalonamentos = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*qtdEscalonamentos);
-
+void fazEscalonamento(struct escalonamento_t* escalonamentos, struct transaction_t* transactions, int qtdEscalonamentos, int unicas){
 	for (int j = 0; j < unicas; j++){
 		escalonamentos[transactions[j].escalonamento-1].qt_transactions++;
 	} 
@@ -104,7 +101,9 @@ void imprimeSaida(struct transaction_t* transactions, int qtdEscalonamentos, int
 				qtd++;
 			}
 	} 
+}
 
+void imprimeSaida(struct escalonamento_t* escalonamentos, int qtdEscalonamentos) {
 	for (int i = 0; i < qtdEscalonamentos; i++)
 	{
 		printf("%d ", escalonamentos[i].escalonamento_id);

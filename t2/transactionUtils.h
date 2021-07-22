@@ -99,10 +99,17 @@ int getTransacoesUnicas(struct line_t* transactions, int tam);
 int addsToOpsArray(struct operation_t* array, int type, char attribute);
 
 /** @brief Cria vetor de escalonamentos e imprime na saida padrao
- *  @param transactions: vetor de operation_t  
+ *  @param escalonamentos: vetor de escalonamentos
+ *  @param qtdEscalonamentos: quantidade de escalonamentos
+ */
+void imprimeSaida(struct escalonamento_t* escalonamentos, int qtdEscalonamentos);
+
+/** @brief Cria vetor de escalonamentos
+ *  @param escalonamentos: vetor de escalonamentos
+ *  @param transactions: vetor de transacoes
  *  @param qtdEscalonamentos: quantidade de escalonamentos
  *  @param unicas: quantidade de transacoes unicas
  */
-void imprimeSaida(struct transaction_t* transactions, int qtdEscalonamentos, int unicas);
+void fazEscalonamento(struct escalonamento_t* escalonamentos, struct transaction_t* transactions, int qtdEscalonamentos, int unicas);
 
 #endif
