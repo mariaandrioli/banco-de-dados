@@ -58,7 +58,20 @@ int main() {
 				}
 				if (transactions_ops[i].operation == COMMIT)
 				{
-					transactions[j].endTime = transactions_ops[i].startTime;		
+					transactions[j].endTime = transactions_ops[i].startTime;
+					// adiciona em allOperations			
+				}
+				if (transactions_ops[i].operation == WRITE)
+				{
+					printf("read");
+					// adiciona em writeOperations	
+					// adiciona em allOperations	
+				}
+				if (transactions_ops[i].operation == READ)
+				{
+					printf("read");
+					// adiciona em readOperations	
+					// adiciona em allOperations	
 				}
 			}
 		}
@@ -68,9 +81,6 @@ int main() {
 	} 
 	// Populando vetor de transações
 
-	// transactions é o vetor de transacoes, tem que primeiro popular ele com as infos
-	// de transactions_ops, ou seja start time, id, primeira operacao, depois com as operacoes
-	// seguintes; quando chegar no commit, coloca end time
 	// para cada escalonamento, um grafo
 	// em cada grafo, faz teste de serialidade (fazer teste na hora de adicionar talvez?)
 	// no fim, ve se é visao equivalente
