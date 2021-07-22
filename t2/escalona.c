@@ -82,7 +82,8 @@ int main() {
 				if (transactionsOps[i].operation == COMMIT)
 				{
 					transactions[j].endTime = transactionsOps[i].startTime;
-					// addsToOpsArray(&transactions[i].allOperations, C, transactionsOps[i].attribute);
+
+					addsToOpsArray(transactions[j].allOperations, C, transactionsOps[i].attribute);
 					commits++;
 					
 					if (commits == ativas)
@@ -94,15 +95,13 @@ int main() {
 				}
 				if (transactionsOps[i].operation == WRITE)
 				{
-					printf("");
-					//addsToOpsArray(transactions[i].writeOperations, W, transactionsOps[i].attribute);
-					//addsToOpsArray(transactions[i].allOperations, W, transactionsOps[i].attribute);
+					addsToOpsArray(transactions[j].writeOperations, W, transactionsOps[i].attribute);
+					addsToOpsArray(transactions[j].allOperations, W, transactionsOps[i].attribute);
 				}
 				if (transactionsOps[i].operation == READ)
 				{
-					printf("");
-					//addsToOpsArray(&transactions[i].writeOperations, R, transactionsOps[i].attribute);
-					//addsToOpsArray(transactions[i].allOperations, R, transactionsOps[i].attribute);	
+					addsToOpsArray(&transactions[j].writeOperations, R, transactionsOps[i].attribute);
+					addsToOpsArray(transactions[j].allOperations, R, transactionsOps[i].attribute);	
 				}
 			}
 		}
