@@ -15,9 +15,9 @@
 #include <stdbool.h>
 
 #define LINESIZE 128
-#define READ "R"
-#define WRITE "W"
-#define COMMIT "C"
+#define READ 'R'
+#define WRITE 'W'
+#define COMMIT 'C'
 
 
 /**

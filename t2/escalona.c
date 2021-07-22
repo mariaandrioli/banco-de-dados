@@ -42,10 +42,35 @@ int main() {
 	int qtdTransacoesUnicas = getTransacoesUnicas(transactions_ops, qtdTransacoes);
 	struct transaction_t* transactions =  (struct transaction_t*) malloc(sizeof(struct transaction_t)*qtdTransacoesUnicas);
 
+	// Populando vetor de transações
+	for (int i = 0; i < qtdTransacoesUnicas; i++){
+		transactions[i].transaction_id = i+1;
+	}
+
+	for (int j = 0; j < qtdTransacoesUnicas; j++)
+		for (int i = 0; i < qtdTransacoes; i++)
+		{
+			if (transactions[j].transaction_id == transactions_ops[i].transaction_id)
+			{
+				if (!(transactions[j].startTime))
+				{
+					transactions[j].startTime = transactions_ops[i].startTime;		
+				}
+				if (transactions_ops[i].operation == COMMIT)
+				{
+					transactions[j].endTime = transactions_ops[i].startTime;		
+				}
+			}
+		}
+
+	for (int j = 0; j < qtdTransacoesUnicas; j++){
+		printf("%d %d %d\n", transactions[j].transaction_id, transactions[j].startTime, transactions[j].endTime);
+	} 
+	// Populando vetor de transações
+
 	// transactions é o vetor de transacoes, tem que primeiro popular ele com as infos
 	// de transactions_ops, ou seja start time, id, primeira operacao, depois com as operacoes
 	// seguintes; quando chegar no commit, coloca end time
-
 	// para cada escalonamento, um grafo
 	// em cada grafo, faz teste de serialidade (fazer teste na hora de adicionar talvez?)
 	// no fim, ve se é visao equivalente
