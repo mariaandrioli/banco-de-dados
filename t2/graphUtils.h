@@ -1,43 +1,17 @@
-/** @file utils.h
+/** @file graphUtils.h
  *  @brief Funções utilizadas no projeto
  *
  *
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
  */
 
-#ifndef __UTILS__
-#define __UTILS__
+#ifndef __GRAPHUTILS__
+#define __GRAPHUTILS__
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
 #include <string.h>
 #include <unistd.h>
-
-#define LINESIZE 128
-
-#define READ "R"
-#define WRITE "W"
-#define COMMIT "C"
-
-/**
- * Representa um id e respectivo escalonamento
-*/
-struct escalonamento_t
-{
-	int index;
-	int escalonamento; 
-};
-
-/**
- * Representa uma transação
-*/
-struct transaction_t
-{
-	int time;
-	int index;
-	char operation;
-	char attribute;
-};
 
 /**
  * Representa um nodo
@@ -90,15 +64,5 @@ void criaAresta (struct grafo_t* grafo, int src, int dest);
  *  @param grafo: grafo que será impresso
  */
 void imprimeGrafo(struct grafo_t* grafo);
-
-/** @brief Função que remove espaços na linha de transação e coloca no struct
- *  @param line: string da transação
- *  @return Struct do tipo transaction_t
- */
-struct transaction_t* retiraEspacos(char* line);
-
-int isInArray(int c, struct escalonamento_t* array, int tam);
-
-int getTransacoesUnicas(struct transaction_t* transactions, int tam);
 
 #endif
