@@ -73,15 +73,60 @@ struct line_t* retiraEspacos(char* line) {
 
 int addsToOpsArray(struct operation_t **array, int type, char attribute){
 	int c = 0;
-	while (!(&array[c]->type)) {
-		c++;
-	}
-
+	// while (!(&array[c]->type)) {
+	// 	c++;
+	// }
 	// array[c]->type = ptr;
 	// array[c]->attribute = attribute;
 
 	return 1;
 }
+
+void imprimeSaida(struct transaction_t* transactions, int qtdEscalonamentos, int unicas) {
+	qtdEscalonamentos--;
+	struct escalonamento_t* escalonamentos = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*qtdEscalonamentos);
+
+	for (int j = 0; j < unicas; j++){
+		escalonamentos[transactions[j].escalonamento-1].qt_transactions++;
+	} 
+
+	for (int i = 0; i < qtdEscalonamentos; i++){
+		escalonamentos[i].escalonamento_id = i+1;
+		escalonamentos[i].transactions_list =  malloc(sizeof(int)*escalonamentos[i].qt_transactions);
+	} 
+
+	for (int i = 0; i < qtdEscalonamentos; i++){
+		int qtd = 0;
+		for (int m = 0; m < unicas; m++)
+			if (transactions[m].escalonamento == escalonamentos[i].escalonamento_id)
+			{
+				escalonamentos[i].transactions_list[qtd] = transactions[m].transaction_id;
+				qtd++;
+			}
+	} 
+
+	for (int i = 0; i < qtdEscalonamentos; i++)
+	{
+		printf("%d ", escalonamentos[i].escalonamento_id);
+
+		for (int j = 0; j < escalonamentos[i].qt_transactions; j++)
+		{
+			if (j == escalonamentos[i].qt_transactions-1)
+			{
+				printf("%d", escalonamentos[i].transactions_list[j]);
+			}
+			else {
+				printf("%d,", escalonamentos[i].transactions_list[j]);
+			}
+		}
+		printf(" ");
+
+		// printf("%s ", escalonamentos[i].seriability_result);
+		// printf("%s", escalonamentos[i].equivalence_result);
+		printf("\n");
+	}
+}
+
 
 /*
 struct transaction_t* getWriteTransactions(struct transaction_t* writeTransactions, struct transaction_t* transactions, int transactionCount) {
