@@ -65,8 +65,10 @@ int main() {
 	}
 	
 	int escalonamentoAtual = 1;
-	int ativas, commits = 0;
+	int ativas = 0;
+	int commits = 0;
 	for (int i = 0; i < qtdTransacoes; i++)
+	{
 		for (int j = 0; j < qtdTransacoesUnicas; j++)
 		{
 			if (transactions[j].transaction_id == transactionsOps[i].transaction_id)
@@ -80,8 +82,7 @@ int main() {
 				if (transactionsOps[i].operation == COMMIT)
 				{
 					transactions[j].endTime = transactionsOps[i].startTime;
-					addsToOpsArray(&transactions[i].allOperations, C, transactionsOps[i].attribute);
-
+					// addsToOpsArray(&transactions[i].allOperations, C, transactionsOps[i].attribute);
 					commits++;
 					
 					if (commits == ativas)
@@ -89,8 +90,7 @@ int main() {
 						escalonamentoAtual++;
 						ativas = 0;
 						commits = 0;
-					}
-					
+					}					
 				}
 				if (transactionsOps[i].operation == WRITE)
 				{
@@ -106,17 +106,13 @@ int main() {
 				}
 			}
 		}
+	}
 	
-	for (int j = 0; j < qtdTransacoesUnicas; j++){
-		printf("id: %d escal:%d\n", transactions[j].transaction_id, transactions[j].escalonamento);
-	} 
-	// Populando vetor de transações
+	// for (int j = 0; j < qtdTransacoesUnicas; j++){
+	// 	printf("id: %d escal:%d\n", transactions[j].transaction_id, transactions[j].escalonamento);
+	// } 
 
-	// para cada escalonamento, um grafo
-	// em cada grafo, faz teste de serialidade (fazer teste na hora de adicionar talvez?)
-	// no fim, ve se é visao equivalente
-
-	printf("qtd transacoes:%d\n\n", qtdTransacoesUnicas);
+	imprimeSaida(transactions, escalonamentoAtual, qtdTransacoesUnicas);
 	return(0);
 }
 
