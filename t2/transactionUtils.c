@@ -71,18 +71,20 @@ struct line_t* retiraEspacos(char* line) {
 	return t;
 }
 
-int addsToOpsArray(struct operation_t *array, int type, char attribute){
+int addsToOpsArray(struct operation_t *array, int type, char attribute, int time){
 	int c = 0;
 	while (array[c].type) {
 		c++;
 	}
 	array[c].type = type;
 	array[c].attribute = attribute;
+	array[c].time = time;
 
 	return 1;
 }
 
 void fazEscalonamento(struct escalonamento_t* escalonamentos, struct transaction_t* transactions, int qtdEscalonamentos, int unicas){
+
 	for (int j = 0; j < unicas; j++){
 		escalonamentos[transactions[j].escalonamento-1].qt_transactions++;
 	} 

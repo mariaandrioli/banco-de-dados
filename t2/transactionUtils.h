@@ -42,6 +42,7 @@ struct operation_t
 {
 	int type;
 	char attribute;
+	int time;
 };
 
 /**
@@ -66,7 +67,7 @@ struct transaction_t
 	struct operation_t *readOperations;
 	struct operation_t *writeOperations;
 	struct operation_t *allOperations;
-	char escalonamento;
+	int escalonamento;
 };
 
 /** @brief Função que remove espaços na linha de transação e coloca no struct
@@ -96,7 +97,7 @@ int getTransacoesUnicas(struct line_t* transactions, int tam);
  *  @param atribute: atributo da operacao
  *  @return vetor modificado
  */
-int addsToOpsArray(struct operation_t* array, int type, char attribute);
+int addsToOpsArray(struct operation_t* array, int type, char attribute, int time);
 
 /** @brief Cria vetor de escalonamentos e imprime na saida padrao
  *  @param escalonamentos: vetor de escalonamentos
