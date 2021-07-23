@@ -13,7 +13,7 @@ OBJS = graphUtils.o \
 %.o: %.c %.h
 	$(CC) -c $(CFLAGS) $<
 
-$(PROG):  $(OBJS)
+$(PROG): $(OBJS)
 	$(CC) -o $@ $^ $(LFLAGS)
 
 docs: Doxyfile

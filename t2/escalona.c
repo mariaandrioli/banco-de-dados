@@ -83,7 +83,7 @@ int main() {
 				{
 					transactions[j].endTime = transactionsOps[i].startTime;
 
-					addsToOpsArray(transactions[j].allOperations, C, transactionsOps[i].attribute);
+					addsToOpsArray(transactions[j].allOperations, C, transactionsOps[i].attribute, transactionsOps[i].startTime);
 					commits++;
 					
 					if (commits == ativas)
@@ -95,23 +95,26 @@ int main() {
 				}
 				if (transactionsOps[i].operation == WRITE)
 				{
-					addsToOpsArray(transactions[j].writeOperations, W, transactionsOps[i].attribute);
-					addsToOpsArray(transactions[j].allOperations, W, transactionsOps[i].attribute);
+					addsToOpsArray(transactions[j].writeOperations, W, transactionsOps[i].attribute, transactionsOps[i].startTime);
+					addsToOpsArray(transactions[j].allOperations, W, transactionsOps[i].attribute,transactionsOps[i].startTime);
 				}
 				if (transactionsOps[i].operation == READ)
 				{
-					addsToOpsArray(transactions[j].writeOperations, R, transactionsOps[i].attribute);
-					addsToOpsArray(transactions[j].allOperations, R, transactionsOps[i].attribute);	
+					addsToOpsArray(transactions[j].writeOperations, R, transactionsOps[i].attribute, transactionsOps[i].startTime);
+					addsToOpsArray(transactions[j].allOperations, R, transactionsOps[i].attribute,transactionsOps[i].startTime);	
 				}
 			}
 		}
 	}
+	int qtdAtributos;
+	getAtributos(transactionsOps, qtdTransacoes, &qtdAtributos);
+	// printf("%d\n", qtdAtributos);
+
 	escalonamentoAtual--;
 	struct escalonamento_t* escalonamentos = (struct escalonamento_t*) malloc(sizeof(struct escalonamento_t)*escalonamentoAtual);
 	fazEscalonamento(escalonamentos, transactions, escalonamentoAtual, qtdTransacoesUnicas);
-	// for (int j = 0; j < qtdTransacoesUnicas; j++){
-	// 	printf("id: %d escal:%d\n", transactions[j].transaction_id, transactions[j].escalonamento);
-	// } 
+
+	// visaoEquivalente(escalonamentos, escalonamentoAtual, transactions, qtdTransacoesUnicas);
 
 	imprimeSaida(escalonamentos, escalonamentoAtual);
 	return(0);
