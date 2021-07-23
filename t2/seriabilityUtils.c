@@ -11,8 +11,8 @@ bool checkForSequencedTransactionPatterns(struct operation_t* currentOperationsA
 	int i = 0;
     int j = 0;
     
-    while (currentOperationsArray[i].attribute != NULL) {
-        while (otherOperationsArray[j].attribute != NULL) {
+    while (currentOperationsArray[i].attribute != ' ') {
+        while (otherOperationsArray[j].attribute != ' ') {
             if(currentOperationsArray[i].attribute == otherOperationsArray[j].attribute)
                 return true;
         }
@@ -51,9 +51,6 @@ void evaluateSeriability(struct escalonamento_t* escalonamento, struct transacti
     //     if(grafos[i])
     // }
 }
-=======
-	return false;
-}*/
 
 int factorial(int n)
 {
