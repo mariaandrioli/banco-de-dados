@@ -13,6 +13,7 @@
 #include <strings.h>
 #include <string.h>
 #include <unistd.h>
+#include "transactionUtils.h"
 
 /**
  * Representa um nodo
@@ -38,6 +39,7 @@ struct list_t
 */
 struct grafo_t
 {
+	int transaction_id;
 	int V;
 	struct list_t* array;
 };
@@ -52,7 +54,7 @@ struct nodo_t* criaNodo(int dest);
  *  @param V: quantidade de vértices do grafo
  *  @return Grafo criado 
  */
-struct grafo_t* criaGrafo(int V);
+struct grafo_t* criaGrafo(int V, int transaction_id);
 
 /** @brief Função que cria aresta no grafo
  *  @param grafo: grafo no qual será colocada a aresta
@@ -65,5 +67,10 @@ void criaAresta (struct grafo_t* grafo, int src, int dest);
  *  @param grafo: grafo que será impresso
  */
 void imprimeGrafo(struct grafo_t* grafo);
+
+/** @brief Função para criar os grafos a partir das transações
+ *  @param transactions: array com todas as transações 
+ */
+void criaGrafos(struct transaction_t *transactions, int qtdTransacoes);
 
 #endif

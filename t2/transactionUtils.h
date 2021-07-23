@@ -5,8 +5,8 @@
  * @author Maria Teresa Kravetz Andrioli (GRR20171602)
  * @author Ana Carolina Faria Magnoni (GRR20166808)
  */
-#ifndef __SERIABILITYUTILS__
-#define __SERIABILITYUTILS__
+#ifndef __TRANSACTIONUTILS__
+#define __TRANSACTIONUTILS__
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>

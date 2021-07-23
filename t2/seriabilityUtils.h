@@ -16,7 +16,19 @@
 #include <stdbool.h>
 
 #include "transactionUtils.h"
+#include "graphUtils.h"
 
-// bool checkForSequencedTransactionPatterns(struct transaction_t* currentTransaction, struct transaction_t* otherTransaction);
+/** @brief A partir de dois vetores de operações, avalia se há relação de dependência entre as transações
+ *  @param currentOperationsArray: vetor de operações do tipo X da transação Y
+ *  @param otherOperationsArray: vetor de operações do tipo Y da transação Z
+ */
+bool checkForSequencedTransactionPatterns(struct operation_t* currentOperationsArray, struct operation_t* otherOperationsArray);
+
+/** @brief Cria vetor de escalonamentos
+ *  @param escalonamentos: vetor de escalonamentos
+ *  @param transactions: vetor de transacoes para avaliar seriabilidade
+ *  @param grafos: vetor de grafos das transações
+ */
+void evaluateSeriability(struct escalonamento_t* escalonamento, struct transaction_t* transactions, struct grafo_t* grafos);
 
 #endif

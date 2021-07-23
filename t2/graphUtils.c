@@ -20,7 +20,7 @@ struct nodo_t* criaNodo(int dest)
 }
  
 // Cria grafo de V vertices
-struct grafo_t* criaGrafo(int V)
+struct grafo_t* criaGrafo(int transaction_id, int V)
 {
 	struct grafo_t* grafo = (struct grafo_t*) malloc(sizeof(struct grafo_t));
 	grafo->V = V;
@@ -66,3 +66,12 @@ void imprimeGrafo(struct grafo_t* grafo)
 		printf("\n");
 	}
 }
+
+void criaGrafos(struct transaction_t *transactions, int qtdTransacoes) {
+	int i = 0;
+	while (transactions[i].transaction_id) {
+		criaGrafo(transactions[i].transaction_id, 0);
+		i++;
+	}
+}
+
