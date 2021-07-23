@@ -42,6 +42,8 @@ int main() {
 	int qtdTransacoesUnicas = getTransacoesUnicas(transactionsOps, qtdTransacoes);
 	struct transaction_t* transactions =  (struct transaction_t*) malloc(sizeof(struct transaction_t)*qtdTransacoesUnicas);
 
+	criaGrafos(transactions, qtdTransacoesUnicas);
+
 	// Populando vetor de transações
 	for (int i = 0; i < qtdTransacoesUnicas; i++){
 		transactions[i].transaction_id = i+1;
@@ -65,6 +67,7 @@ int main() {
 	}
 	
 	int escalonamentoAtual = 1;
+	// int qtdEscalonamentos = 1;
 	int ativas = 0;
 	int commits = 0;
 	for (int i = 0; i < qtdTransacoes; i++)
@@ -115,6 +118,8 @@ int main() {
 	fazEscalonamento(escalonamentos, transactions, escalonamentoAtual, qtdTransacoesUnicas);
 
 	// visaoEquivalente(escalonamentos, escalonamentoAtual, transactions, qtdTransacoesUnicas);
+
+	// evaluateSeriability(escalonamento, transactions);
 
 	imprimeSaida(escalonamentos, escalonamentoAtual);
 	return(0);
